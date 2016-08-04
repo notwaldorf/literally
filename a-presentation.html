@@ -85,17 +85,22 @@
         children[this._currentSlide].removeAttribute('showing');
         children[newSlide].setAttribute('showing', true);
         this._currentSlide = newSlide;
+
+        // Make sure the hash is in sync.
+        window.location.hash = this._currentSlide;
       },
 
       _loadHashSlide: function() {
-        var slide = window.location.hash.replace('#', '');
+        var slide = parseInt(window.location.hash.replace('#', ''));
 
         // Sweet, sweet edge checking.
         var children = this.children;
         if (slide === '' || slide < 0 || slide > children.length - 1)
           slide = 0;
 
-        this._transition(children, slide);
+        // If we've actually changed the page, change it.
+        if (this._currentSlide !== slide)
+          this._transition(children, slide);
       }
     });
   </script>
