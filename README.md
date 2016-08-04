@@ -3,7 +3,7 @@
 But using web components. Because web components are cool.
 
 ## Making your first presentation
-1. Download the web components that make `literally` from `bower`:
+1. Download this from `bower`:
 ```
 bower install --save notwaldorf/literally
 ```
@@ -50,30 +50,34 @@ adjust the paths in the example as needed.
 </html>
 ```
 
-That's actually it! You have a presentation!! All the arrows, space, enter and
-clicks (on the left/right side of the slide) should advance/back up the slides.
+That's actually it! You have a presentation!! Arrows, space, enter and
+clicks advance/back up the slides. For slide ideas, check out this repo's demo.
 
-## Details about the slide layout
-If you don't care about slide layout, I tried to make things easier and
+## What about the slide layout?
+If you don't care about the slide layout, I tried to make things easier and
 have `a-slide` make some design decisions.
-If you don't like these decisions, you don't have to use them. You can just style whatever
+If you don't like these decisions, you don't have to use them! You can just style whatever
 content you're passing to the slide. The world is yours:
 ```html
 <a-slide>
   <div class="...">
     <h1>...</h1>
     <h4>...</h4>
+    ...
   </div>
 </a-slide>
 ```
 
 Now, back to styling.
 
-`<a-slide>` has 3 sections of text, with the classes `pretitle`, `title` and `subtitle`.
+`<a-slide>` has 3 sections of text, with the CSS classes `pretitle`, `title` and `subtitle`.
 You need to include these class names for `<a-slide>` to know where to position things,
 but you can also use these classes separately for styling:
 
 ```html
+<style>
+.title { color: papayawhip; }
+</style>
 <a-slide>
   <div class="pretitle">I am a thing before the title</div>
   <div class="title">I am a giant title!</div>
@@ -81,7 +85,7 @@ but you can also use these classes separately for styling:
 </a-slide>
 ```
 
-There's also some centering attributes that try to help:
+There are also some `<a-slide>` attributes that try to help position the text:
 
 ```html
 <!-- different horizontal centering -->
@@ -94,16 +98,20 @@ There's also some centering attributes that try to help:
 ```
 
 ## How to contribute
-If you're familiar with any Polymer elements, development is pretty similar
-to that, using the Polymer [CLI](https://www.polymer-project.org/1.0/docs/tools/polymer-cli):
+If you're familiar with any [Polymer elements](https://www.polymer-project.org/1.0/docs/tools/reusable-elements), development is pretty similar to that, using the Polymer [CLI](https://www.polymer-project.org/1.0/docs/tools/polymer-cli):
 
 ```
-# make sure you have the polymer cli installed
+# If you haven't installed the Polymer CLI before, run this:
 # npm install -g polymer-cli
 
+# Get the code
 git clone https://github.com/notwaldorf/literally.git
 cd literally
+
+# Get its dependencies
 bower install
+
+# Run the demo
 polymer serve
 # navigate to http://localhost:8080/components/literally/demo/ to see the demo
 ```
