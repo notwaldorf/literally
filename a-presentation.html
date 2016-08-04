@@ -44,6 +44,15 @@
             this.next();
           }
         }, true);
+
+        this.addEventListener('click', function(event) {
+          var clickX = event.clientX;
+          if (clickX > (screen.width / 2))
+            this.next();
+          else {
+            this.previous();
+          }
+        });
       },
 
       next: function() {
