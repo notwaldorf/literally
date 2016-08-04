@@ -75,8 +75,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this._maxSlides = this.$.pages.children.length;
 
         // Check if there's an initial loaded slide, or the default one.
-        this._loadHashSlide();
-        window.addEventListener('hashchange', this._loadHashSlide.bind(this));
+        this.currentSlide = parseInt(window.location.hash.replace('#', '') || 0, 10);
+
+        //this._loadHashSlide();
+        //window.addEventListener('hashchange', this._loadHashSlide.bind(this));
 
         var nexts = [39 /* right */, 40 /* down */, 32 /* space */, 32 /* space */, 13 /* enter */];
         var backs = [37 /* left */, 38 /* up */];
@@ -106,42 +108,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
 
         // Don't go past the end.
-        if (this.currentSlide < (this.$.pages.children.length - 1))
+        if (this.currentSlide < this._maxSlides - 1) {
+          window.location.hash = this.currentSlide + 1;
           this.$.pages.selectNext();
-
-        if (this.animated)
-          this.$.pages.selectedItem.playAnimation('entry');
-
-        // Make sure the hash is in sync.
-        //window.location.hash = this.currentSlide;
+        }
       },
 
       previous: function() {
+        var page = this.currentSlide;
+
         if (this.animated) {
           this._entryAnimation = 'slide-from-left-animation';
           this._exitAnimation = 'slide-right-animation';
         }
 
         // Don't go past the beginning.
-        if (this.currentSlide > 0 )
+        if (this.currentSlide > 0 ) {
+          window.location.hash = this.currentSlide - 1;
           this.$.pages.selectPrevious();
-
-        if (this.animated)
-          this.$.pages.selectedItem.playAnimation('entry');
-
-        // Make sure the hash is in sync.
-        //window.location.hash = this.currentSlide;
+        }
       },
 
       _loadHashSlide: function() {
         var slide = parseInt(window.location.hash.replace('#', ''));
+        console.log('updating the hash to', slide);
 
         // Sweet, sweet edge checking.
         var children = this.children;
         if (!slide || slide < 0 || slide > children.length - 1)
           slide = 0;
 
-        this.currentSlide = slide;
+        if (this.currentSlide !== slide)
+          this.currentSlide = slide;
       }
     });
   </script>
