@@ -13,30 +13,45 @@ bower install --save notwaldorf/literally
 
 
 ## Making a presentation!
-In your `index.html` or wherever your presentation lives, you're going to need to include these elements and the polyfill:
+In your `index.html` or wherever your presentation lives, you're going to need to
+include these elements, the polyfill, and make a presentation out of slides:
 
 ```html
-<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+<html>
+  <head>
+  <!-- Include the polyfill -->
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
-<link rel="import" href="bower_components/literally/a-presentation.html">
-<link rel="import" href="bower_components/literally/a-slide.html">
+  <!-- Import the elements -->
+  <link rel="import" href="bower_components/literally/a-presentation.html">
+  <link rel="import" href="bower_components/literally/a-slide.html">
 
-<!-- I also made you a basic theme that you can play with -->
-<link rel="stylesheet" href="bower_components/literally/sample-theme.css">
-```
+  <!-- I also made you a basic theme that you can play with -->
+  <link rel="stylesheet" href="bower_components/literally/sample-theme.css">
+  <style>
+    /* The least you can do :) */
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+  </style>
+  </head>
+  <body>
+    <a-presentation>
+      <a-slide>
+        <div class="title">slide one</div>
+      </a-slide>
 
-A presentation is made of slides:
+      <a-slide>
+        <div class="title">slide two</div>
+      </a-slide>
 
-```html
-<a-presentation>
-  <a-slide>
-    <div class="title">slide one</div>
-  </a-slide>
-
-  <a-slide>
-    <div class="title">slide two</div>
-  </a-slide>
-</a-presentation>
+      <a-slide class="theme-orange">
+        <div class="title">If you want to use the theme.</div>
+      </a-slide>
+    </a-presentation>
+  </body>
+</html>
 ```
 
 If you don't care about slide layout, I tried to make things easier and have `a-slide` make some design decisions. It has 3 sections of text, with the classes `pretitle`, `title` and `subtitle`. You need to include these class names for `<a-slide>` to know where to position things, but you can also use these classes separately for styling:

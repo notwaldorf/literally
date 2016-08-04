@@ -1,3 +1,8 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
 a-slide:before {
   /* Use this so that it blurs just the background image, and not
    * the foreground text */
