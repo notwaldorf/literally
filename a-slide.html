@@ -8,26 +8,30 @@
       padding: 0 10vh;
 
       @apply(--layout);
-    }
-
-    :host(.center-vertically) {
       @apply(--layout-center);
     }
 
-    :host(.center-horizontally) {
+    :host(.center) {
       @apply(--layout-center-justified);
     }
 
     ::content .title {
       font-size: calc(16px + 6vw);
       font-weight: bold;
-      @apply(--slide-title);
     }
 
     ::content .subtitle {
       font-size: calc(16px + 4vw);
       font-weight: 200;
-      @apply(--slide-subtitle);
+    }
+
+    /* Prevent selection */
+    ::content .title, ::content .subtitle {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
   </style>
 
