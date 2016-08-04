@@ -19,7 +19,9 @@
   "license": "http://polymer.github.io/LICENSE.txt",
   "homepage": "https://github.com/notwaldorf/literally",
   "ignore": [
-    "bower_components"
+    "bower_components",
+    "deploy.sh",
+    "README.md"
   ],
   "dependencies": {
     "polymer": "polymer/polymer#^1.0.0",
