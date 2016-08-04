@@ -3,7 +3,13 @@ body {
   font-family: sans-serif;
 }
 
-a-slide:before {
+a-slide.theme-orange,
+a-slide.theme-blue {
+  color: white;
+}
+
+a-slide.theme-orange:before,
+a-slide.theme-blue:before {
   /* Use this so that it blurs just the background image, and not
    * the foreground text */
   content: "";
@@ -38,7 +44,7 @@ a-slide.theme-orange:before {
   background: url("http://farm4.staticflickr.com/3712/10194610465_1e3d7c6d29_z_d.jpg")
       center center no-repeat,
       linear-gradient(top, rgb(241, 90, 36) 0%, rgba(252, 238, 0, 1.1) 100%);
-  color: white;
+
   background-blend-mode: multiply;
   background-size: cover;
 }
@@ -56,7 +62,7 @@ a-slide.theme-blue:before {
   background: url("http://farm4.staticflickr.com/3712/10194610465_1e3d7c6d29_z_d.jpg")
       center center no-repeat,
       linear-gradient(top, rgba(11, 0, 48, 0.8) 0%, rgba(184, 66, 129, 0.8) 100%);
-  color: white;
+
   background-blend-mode: multiply;
   background-size: cover;
 }
