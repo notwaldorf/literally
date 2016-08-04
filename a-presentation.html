@@ -75,10 +75,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this._maxSlides = this.$.pages.children.length;
 
         // Check if there's an initial loaded slide, or the default one.
-        this.currentSlide = parseInt(window.location.hash.replace('#', '') || 0, 10);
-
-        //this._loadHashSlide();
-        //window.addEventListener('hashchange', this._loadHashSlide.bind(this));
+        this.currentSlide = parseInt(window.location.hash.replace('#', '') || 0);
 
         var nexts = [39 /* right */, 40 /* down */, 32 /* space */, 32 /* space */, 13 /* enter */];
         var backs = [37 /* left */, 38 /* up */];
@@ -127,19 +124,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           window.location.hash = this.currentSlide - 1;
           this.$.pages.selectPrevious();
         }
-      },
-
-      _loadHashSlide: function() {
-        var slide = parseInt(window.location.hash.replace('#', ''));
-        console.log('updating the hash to', slide);
-
-        // Sweet, sweet edge checking.
-        var children = this.children;
-        if (!slide || slide < 0 || slide > children.length - 1)
-          slide = 0;
-
-        if (this.currentSlide !== slide)
-          this.currentSlide = slide;
       }
     });
   </script>
