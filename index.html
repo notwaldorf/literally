@@ -47,6 +47,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       height: 100%;
       width: 100%;
       overflow: hidden;
+      -webkit-overflow-scrolling: auto;
     }
 
     .code-snippet {
@@ -100,13 +101,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </div>
     </a-slide>
 
-    <a-slide class="theme-blue" align-center>
+    <!-- align center makes sure the content as a whole is centered in the page
+      text-align: center actually centers the text inside the content -->
+    <a-slide class="theme-blue" align-center style="text-align: center">
+      <div class="iframe-title">iframes are <i><b>dope*</b></i></div>
+
       <!-- anyway i hate iframes and don't know how to style them -->
-      <div style="text-align: center">
-        <div class="iframe-title">iframes are <i><b>dope*</b></i></div>
-        <iframe src="http://meowni.ca/emojillate/" style="width: 80vw; height: 50vh;" scrolling="no"></iframe>
-        <div class="iframe-title">* this is a lie</div>
+      <div style="width: 80vw; height: 80vh; overflow: auto; text-align: center;">
+        <iframe src="http://meowni.ca/emojillate/" height="100%" width="100%"></iframe>
       </div>
+      <div class="iframe-title">* this is a lie</div>
     </a-slide>
 
     <a-slide class="theme-orange" align-right>
