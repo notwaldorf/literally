@@ -3,6 +3,21 @@ body {
   font-family: sans-serif;
 }
 
+a-slide.theme-white {
+  background-color: white;
+  color: black;
+}
+
+a-slide.theme-green {
+  background-color: #0fa758;
+  color: white;
+}
+
+a-slide.theme-red {
+  background-color: #DB4441;
+  color: white;
+}
+
 a-slide.theme-orange,
 a-slide.theme-blue {
   color: white;
