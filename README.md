@@ -1,6 +1,11 @@
 # literally another slides making thingie
 
-But using web components. Because web components are cool.
+But using web components. Because web components are cool. `literally` doesn't do
+any fancy animations or builds, and it forces you to only have a
+chunk of big text on your slide. It looks like this:
+
+<img width="1438" alt="screen shot 2016-08-04 at 10 55 55 am" src="https://cloud.githubusercontent.com/assets/1369170/17412531/14cee48c-5a32-11e6-990c-a3190591f402.png">
+
 
 ## Making your first presentation
 1. Download this from `bower`:
