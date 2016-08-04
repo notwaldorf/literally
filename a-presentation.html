@@ -26,8 +26,10 @@
 
       attached: function() {
         this.focus();
-        this._currentSlide = 0;
-        this.children[0].setAttribute('showing', true);
+
+        // Check if there's an initial loaded slide, or the default one.
+        this._loadHashSlide();
+        window.addEventListener('hashchange', this._loadHashSlide.bind(this));
 
         this.addEventListener('keydown', function(event) {
           if (event.keyCode == '38') {  // up arrow
@@ -77,6 +79,18 @@
           this._currentSlide--;
         }
         children[this._currentSlide].setAttribute('showing', true);
+      },
+
+      _loadHashSlide: function() {
+        var slide = window.location.hash.replace('#', '');
+
+        // Sweet, sweet edge checking.
+        var children = this.children;
+        if (slide === '' || slide < 0 || slide > children.length - 1)
+          slide = 0;
+
+        this._currentSlide = slide;
+        this.children[this._currentSlide].setAttribute('showing', true);
       }
     });
   </script>
