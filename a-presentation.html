@@ -26,6 +26,7 @@
 
       attached: function() {
         this.focus();
+        this._currentSlide = 0;
 
         // Check if there's an initial loaded slide, or the default one.
         this._loadHashSlide();
@@ -60,25 +61,30 @@
       next: function() {
         var children = this.children;
 
-        children[this._currentSlide].removeAttribute('showing');
         if (this._currentSlide === (children.length - 1)) {
-          this._currentSlide = 0;
+          newSlide = 0;
         } else {
-          this._currentSlide++;
+          newSlide = this._currentSlide + 1;
         }
-        children[this._currentSlide].setAttribute('showing', true);
+        this._transition(children, newSlide);
       },
 
       previous: function() {
         var children = this.children;
 
-        children[this._currentSlide].removeAttribute('showing');
+        var newSlide;
         if (this._currentSlide === 0) {
-          this._currentSlide = children.length - 1;
+          newSlide = children.length - 1;
         } else {
-          this._currentSlide--;
+          newSlide = this._currentSlide - 1;
         }
-        children[this._currentSlide].setAttribute('showing', true);
+        this._transition(children, newSlide);
+      },
+
+      _transition: function(children, newSlide) {
+        children[this._currentSlide].removeAttribute('showing');
+        children[newSlide].setAttribute('showing', true);
+        this._currentSlide = newSlide;
       },
 
       _loadHashSlide: function() {
@@ -89,8 +95,7 @@
         if (slide === '' || slide < 0 || slide > children.length - 1)
           slide = 0;
 
-        this._currentSlide = slide;
-        this.children[this._currentSlide].setAttribute('showing', true);
+        this._transition(children, slide);
       }
     });
   </script>
