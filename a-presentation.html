@@ -69,25 +69,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       next: function() {
         var children = this.children;
-
-        if (this._currentSlide === (children.length - 1)) {
-          newSlide = 0;
-        } else {
+        var newSlide;
+        if (this._currentSlide < (children.length - 1)) {
           newSlide = this._currentSlide + 1;
+          this._transition(children, newSlide);
         }
-        this._transition(children, newSlide);
       },
 
       previous: function() {
-        var children = this.children;
-
         var newSlide;
-        if (this._currentSlide === 0) {
-          newSlide = children.length - 1;
-        } else {
+        if (this._currentSlide > 0) {
           newSlide = this._currentSlide - 1;
+          this._transition(this.children, newSlide);
         }
-        this._transition(children, newSlide);
       },
 
       _transition: function(children, newSlide) {
