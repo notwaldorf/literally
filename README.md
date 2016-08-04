@@ -111,5 +111,20 @@ There's also some centering attributes that try to help:
 </a-slide>
 ```
 
+## How to contribute
+If you're familiar with any Polymer elements, development is pretty similar
+to that, using the Polymer [CLI](https://www.polymer-project.org/1.0/docs/tools/polymer-cli):
+
+```
+# make sure you have the polymer cli installed
+# npm install -g polymer-cli
+
+git clone https://github.com/notwaldorf/literally.git
+cd literally
+bower install
+polymer serve
+# navigate to http://localhost:8080/components/literally/demo/ to see the demo
+```
+
 ## I think that's it!
 🍰 and 🍷 for all!

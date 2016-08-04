@@ -41,8 +41,8 @@ bower cache clean
 bower install $org/$repo
 echo done
 
-# copy the index.html for the demo out here
-cp bower_components/$repo/index.html .
+# redirect to the demo
+echo "<META http-equiv=refresh content=\"0;URL=bower_components/$repo/demo/\">" > index.html
 
 echo pushing to gh-pages...
 # send it all to github
