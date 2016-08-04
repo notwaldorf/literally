@@ -29,7 +29,6 @@
 
         // Check if there's an initial loaded slide, or the default one.
         this._loadHashSlide();
-
         window.addEventListener('hashchange', this._loadHashSlide.bind(this));
 
         this.addEventListener('keydown', function(event) {

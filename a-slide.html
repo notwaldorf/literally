@@ -5,7 +5,6 @@
       box-sizing: border-box;
       height: 100%;
       width: 100%;
-      padding: 0 10vh;
 
       -webkit-overflow-scrolling: touch;
       @apply(--layout);
@@ -14,6 +13,10 @@
 
     :host(.center) {
       @apply(--layout-center-justified);
+    }
+
+    :host(.full-width) > .content-wrapper {
+      width: 100%
     }
 
     ::content .title {
@@ -26,8 +29,10 @@
       font-weight: 200;
     }
 
-    /* Prevent selection */
     ::content .title, ::content .subtitle {
+      padding: 0 10vh;
+
+      /* Prevent selection */
       -webkit-touch-callout: none;
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -37,7 +42,7 @@
   </style>
 
   <template>
-    <div class="content">
+    <div class="content-wrapper">
       <content select=".title"></content>
       <content select=".subtitle"></content>
       <content></content>
