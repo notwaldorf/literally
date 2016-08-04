@@ -1,7 +1,7 @@
 {
   "name": "literally",
   "version": "0.0.1",
-  "description": "Literally yet another presentation slide thing",
+  "description": "Literally yet another presentation slide thingie",
   "authors": [
     "Monica Dinculescu <noms@google.com>"
   ],
@@ -19,7 +19,7 @@
   "license": "http://polymer.github.io/LICENSE.txt",
   "homepage": "https://github.com/notwaldorf/literally",
   "ignore": [
-    "/.*"
+    "bower_components"
   ],
   "dependencies": {
     "polymer": "polymer/polymer#^1.0.0",
