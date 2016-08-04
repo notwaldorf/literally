@@ -37,7 +37,7 @@ adjust the paths in the example as needed.
   </style>
   </head>
   <body>
-    <a-presentation>
+    <a-presentation animated>
       <a-slide>
         <div class="title">slide one</div>
       </a-slide>
@@ -74,6 +74,9 @@ content you're passing to the slide. The world is yours:
 ```
 
 Now, back to styling.
+
+`<a-presentation>` has an `animated` attribute. If you set it, you'll get sliding transitions
+between your slides.
 
 `<a-slide>` has 3 sections of text, with the CSS classes `pretitle`, `title` and `subtitle`.
 You need to include these class names for `<a-slide>` to know where to position things,
