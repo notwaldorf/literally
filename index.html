@@ -22,62 +22,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <link rel="import" href="./a-presentation.html">
   <link rel="import" href="./a-slide.html">
 
+  <!-- Look, I made you a basic theme -->
+  <link rel="stylesheet" href="sample-theme.css">
+
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,700italic,700,400italic,100,100italic' rel='stylesheet' type='text/css'>
   <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
 
   <style>
+    /* The sample-theme.css sets up some slide backgrounds for you. Here
+       we set up some content related styles.
+     */
+
+    /* Set up some fonts */
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
     }
+    pre {
+      font-family: 'Inconsolata', monospace;
+    }
 
+    /* Disable bounce scrolling if that's not your thing (it's not mine) */
     html, body {
       height: 100%;
       width: 100%;
       overflow: hidden;
       -webkit-overflow-scrolling: auto;
-    }
-
-    a-presentation {
-      color: white;
-    }
-
-    a-slide:before {
-      /* Use this so that it blurs just the background image, and not
-       * the foreground text */
-      content: "";
-      position: fixed;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      z-index: -1;
-
-      /* Hack to get rid of the white border after blurring */
-      transform: scale(1.02);
-
-      -webkit-filter: blur(5px);
-      -moz-filter: blur(5px);
-      -o-filter: blur(5px);
-      -ms-filter: blur(5px);
-      filter: blur(5px);
-
-      /* lol OMG */
-      background: url("http://farm4.staticflickr.com/3712/10194610465_1e3d7c6d29_z_d.jpg")
-          center center no-repeat,
-          -webkit-linear-gradient(top, rgb(241, 90, 36) 0%, rgb(252, 238, 0) 100%);
-      background: url("http://farm4.staticflickr.com/3712/10194610465_1e3d7c6d29_z_d.jpg")
-          center center no-repeat,
-          -moz-linear-gradient(top, rgb(241, 90, 36) 0%, rgb(252, 238, 0) 100%);
-      background: url("http://farm4.staticflickr.com/3712/10194610465_1e3d7c6d29_z_d.jpg")
-          center center no-repeat,
-          -ms-linear-gradient(top, rgb(241, 90, 36) 0%, rgb(252, 238, 0) 100%);
-      background: url("http://farm4.staticflickr.com/3712/10194610465_1e3d7c6d29_z_d.jpg")
-          center center no-repeat,
-          linear-gradient(top, rgb(241, 90, 36) 0%, rgb(252, 238, 0) 100%);
-
-      background-blend-mode: multiply;
-      background-size: cover;
     }
 
     .code-snippet {
@@ -87,34 +57,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       font-size: calc(16px + 2vw);
     }
 
-    pre {
-      font-family: 'Inconsolata', monospace;
-    }
-
     .iframe-title {
       font-size: 24px;
       font-weight: lighter;
     }
   </style>
 </head>
+<!-- unresoved is a polymer keyword that prevents FOUC -->
 <body unresolved>
   <a-presentation>
-    <a-slide class="align-center">
+    <!-- theme-orange comes from sample-theme.css -->
+    <!--but align-center is a property of a-slide -->
+
+    <a-slide class="theme-orange" align-center>
       <div class="title">Yup</div>
       <div class="subtitle">It's <b>literally</b> another slides thingie</div>
     </a-slide>
 
-    <a-slide>
+    <a-slide class="theme-orange">
       <div class="pretitle"><i>ok</i></div>
       <div class="title">I know what you're thinking.</div>
       <div class="subtitle">This is a <i><b>great</b></i> idea!</div>
     </a-slide>
 
-    <a-slide class="align-center">
+    <a-slide class="theme-blue" align-center>
       <img src="http://i.imgur.com/c4jt321.png?fb">
     </a-slide>
 
-    <a-slide class="full-width">
+    <!-- full-width means that the content will not be sized, and takes the whole slide -->
+    <a-slide class="theme-blue" full-width>
       <div class="pretitle">it's web-components, yo</div>
       <div class="code-snippet">
         <pre>
@@ -128,17 +99,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </div>
     </a-slide>
 
-    <a-slide class="align-center">
+    <a-slide class="theme-blue" align-center>
       <div class="iframe-title">iframes are <i><b>dope</b></i> and do dope things</div>
       <iframe src="http://meowni.ca/emojillate/" style="width: 80vw; height: 80vh;"></iframe>
     </a-slide>
 
-    <a-slide class="align-right">
+    <a-slide class="theme-orange" align-right>
       <div class="title">The end</div>
       <div class="subtitle">Ok we're done here.</div>
     </a-slide>
 
-  </a-presentation>
+    <a-slide class="theme-orange" align-center>
+      <div class="title">@notwaldorf</div>
+    </a-slide>
 
+  </a-presentation>
 </body>
 </html>

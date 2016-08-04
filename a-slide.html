@@ -11,21 +11,25 @@
       @apply(--layout-center);
     }
 
-    :host(.align-center) {
+    :host([align-center]) {
       @apply(--layout-center-justified);
     }
 
-    :host(.align-right) {
+    :host([align-right]) {
       @apply(--layout-end-justified);
     }
 
-    :host(.align-right) ::content .pretitle,
-    :host(.align-right) ::content .title,
-    :host(.align-right) ::content .subtitle  {
+    :host([align-left]) {
+      @apply(--layout-start-justified);
+    }
+
+    :host([align-right]) ::content .pretitle,
+    :host([align-right]) ::content .title,
+    :host([align-right]) ::content .subtitle  {
       text-align: right;
     }
 
-    :host(.full-width) > .content-wrapper {
+    :host([full-width]) > .content-wrapper {
       width: 100%;
     }
 
@@ -56,8 +60,6 @@
       font-size: calc(16px + 4vw);
       font-weight: lighter;
     }
-
-
   </style>
 
   <template>
