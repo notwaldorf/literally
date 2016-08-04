@@ -1,0 +1,47 @@
+<dom-module id="a-slide">
+  <style>
+    :host {
+      display: block;
+      box-sizing: border-box;
+      height: 100vh;
+      width: 100%;
+      background: var(--slide-background, white);
+      padding: 0 10vh;
+
+      @apply(--layout);
+    }
+
+    :host(.center-vertically) {
+      @apply(--layout-center);
+    }
+
+    :host(.center-horizontally) {
+      @apply(--layout-center-justified);
+    }
+
+    ::content .title {
+      font-size: 100px;
+      font-weight: bold;
+      @apply(--slide-title);
+    }
+
+    ::content .subtitle {
+      font-size: 60px;
+      font-weight: 200;
+      @apply(--slide-subtitle);
+    }
+  </style>
+
+  <template>
+    <div class="content">
+      <content select=".title"></content>
+      <content select=".subtitle"></content>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'a-slide'
+    });
+  </script>
+</dom-module>
