@@ -11,25 +11,27 @@
       @apply(--layout-center);
     }
 
-    :host(.center) {
+    :host(.align-center) {
       @apply(--layout-center-justified);
     }
 
+    :host(.align-right) {
+      @apply(--layout-end-justified);
+    }
+
+    :host(.align-right) ::content .pretitle,
+    :host(.align-right) ::content .title,
+    :host(.align-right) ::content .subtitle  {
+      text-align: right;
+    }
+
     :host(.full-width) > .content-wrapper {
-      width: 100%
+      width: 100%;
     }
 
-    ::content .title {
-      font-size: calc(16px + 6vw);
-      font-weight: bold;
-    }
-
+    ::content .pretitle,
+    ::content .title,
     ::content .subtitle {
-      font-size: calc(16px + 4vw);
-      font-weight: 200;
-    }
-
-    ::content .title, ::content .subtitle {
       padding: 0 10vh;
 
       /* Prevent selection */
@@ -39,10 +41,28 @@
       -ms-user-select: none;
       user-select: none;
     }
+
+    ::content .pretitle {
+      font-size: calc(16px + 2vw);
+      font-weight: normal;
+    }
+
+    ::content .title {
+      font-size: calc(16px + 6vw);
+      font-weight: bold;
+    }
+
+    ::content .subtitle {
+      font-size: calc(16px + 4vw);
+      font-weight: lighter;
+    }
+
+
   </style>
 
   <template>
     <div class="content-wrapper">
+      <content select=".pretitle"></content>
       <content select=".title"></content>
       <content select=".subtitle"></content>
       <content></content>
