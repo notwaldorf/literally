@@ -1,7 +1,6 @@
-# literally
+# literally another slides making thingie
 
-Yup. It's literally another slides making thingie. But using web components.
-Because web components are cool.
+But using web components. Because web components are cool.
 
 ## Step 1: get them dependencies
 The first thing you need to do is get the elements that make `literally` from `bower`:
@@ -11,7 +10,7 @@ bower install --save notwaldorf/literally
 ```
 
 `literally` uses Polymer to make web components because that's what I work on,
-and writing web components by hand is kind of meh. This doesn't matter. What does matter is that web components aren't supported on all the browsers right now, so `literally` also ships with the `webcomponentsjs` polyfill,
+and writing web components by hand is kind of meh. This doesn't really matter. What does matter is that web components aren't supported in all browsers right now, so `literally` also ships with the `webcomponentsjs` polyfill,
 which you should use (unless you hate all browsers that aren't Chrome, in which case you shouldn't).
 
 ## Step 2: making a presentation!
@@ -61,9 +60,12 @@ adjust the path as needed.
 That's actually it! You have a presentation. All the arrows, space, enter and
 clicks (on the left/right side of the slide) should advance/back up the slides.
 
+For a more complicated presentation, check out the `index.html` of _this_ repo.
+
+
 ## Step 3: let's talk about layout
 If you don't care about slide layout, I tried to make things easier and
-have `a-slide` make some design decisions (namely the decisions I make in my slides).
+have `a-slide` make some design decisions.
 If you don't like these decisions, you don't have to use them. You can just style whatever
 content you're passing to the slide. The world is yours:
 ```html
@@ -77,7 +79,7 @@ content you're passing to the slide. The world is yours:
 
 Now, back to styling.
 
-`<a-slide<` has 3 sections of text, with the classes `pretitle`, `title` and `subtitle`.
+`<a-slide>` has 3 sections of text, with the classes `pretitle`, `title` and `subtitle`.
 You need to include these class names for `<a-slide>` to know where to position things,
 but you can also use these classes separately for styling:
 
@@ -108,3 +110,6 @@ There's also some centering attributes that try to help:
   <!-- the content will span the entire slide -->
 </a-slide>
 ```
+
+## I think that's it!
+🍰 and 🍷 for all!
