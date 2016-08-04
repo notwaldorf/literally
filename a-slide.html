@@ -29,6 +29,11 @@
       text-align: right;
     }
 
+    .content-wrapper {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
     :host([full-width]) > .content-wrapper {
       width: 100%;
     }
@@ -36,7 +41,7 @@
     ::content .pretitle,
     ::content .title,
     ::content .subtitle {
-      padding: 0 10vh;
+      padding: 0 10vw;
 
       /* Prevent selection */
       -webkit-touch-callout: none;

@@ -54,7 +54,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       background-color: rgba(0, 0, 0, 0.6);
       width: 100%;
       padding: 20px;
-      font-size: calc(16px + 2vw);
+      font-size: calc(10px + 2vw);
+      overflow-x: auto;
     }
 
     .iframe-title {
@@ -81,7 +82,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </a-slide>
 
     <a-slide class="theme-blue" align-center>
-      <img src="http://i.imgur.com/c4jt321.png?fb">
+      <!-- max-width to make it mobile friendly, if you care -->
+      <img style="max-width:100%" src="http://i.imgur.com/c4jt321.png?fb" alt="this is fine dog on fire">
     </a-slide>
 
     <!-- full-width means that the content will not be sized, and takes the whole slide -->
@@ -100,8 +102,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </a-slide>
 
     <a-slide class="theme-blue" align-center>
-      <div class="iframe-title">iframes are <i><b>dope</b></i> and do dope things</div>
-      <iframe src="http://meowni.ca/emojillate/" style="width: 80vw; height: 80vh;"></iframe>
+      <!-- anyway i hate iframes and don't know how to style them -->
+      <div style="text-align: center">
+        <div class="iframe-title">iframes are <i><b>dope</b></i> and do dope things</div>
+        <iframe src="http://meowni.ca/emojillate/" style="width: 80vw; height: 50vh;"></iframe>
+      </div>
     </a-slide>
 
     <a-slide class="theme-orange" align-right>
