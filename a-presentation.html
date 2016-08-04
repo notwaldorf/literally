@@ -9,6 +9,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../neon-animation/neon-animated-pages.html">
+<link rel="import" href="../neon-animation/neon-animations.html">
 
 <dom-module id="a-presentation">
   <style>
@@ -19,16 +21,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       width: 100%;
     }
 
+    neon-animated-pages {
+      height: 100%;
+      width: 100%;
+    }
+
     :host(:focus) {
       outline: none;
     }
-    :host > ::content > :not([showing]) {
+
+    :host > ::content > :not([.iron-selected]) {
       display: none !important;
     }
   </style>
 
   <template>
-    <content select="a-slide"></content>
+    <neon-animated-pages id="pages"
+        selected="{{currentSlide}}"
+        entry-animation="[[_entryAnimation]]"
+        exit-animation="[[_exitAnimation]]">
+			<content select="a-slide"></content>
+		</neon-animated-pages>
   </template>
 
   <script>
@@ -39,8 +52,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         'tabindex': 0
       },
 
+      properties: {
+        /**
+         * The current slide showing.
+         */
+        currentSlide: {
+          type: Number,
+          value: 0
+        },
+
+        /**
+         * Set to true if you want the slides to animate
+         */
+        animated: {
+          type: Boolean,
+          value: false
+        }
+      },
+
       attached: function() {
         this.focus();
+        this._maxSlides = this.$.pages.children.length;
 
         // Check if there's an initial loaded slide, or the default one.
         this._loadHashSlide();
@@ -68,31 +100,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       next: function() {
-        var children = this.children;
-        var newSlide;
-        if (this._currentSlide < (children.length - 1)) {
-          newSlide = this._currentSlide + 1;
-          this._transition(children, newSlide);
+        if (this.animated) {
+          this._entryAnimation = 'slide-from-right-animation';
+          this._exitAnimation = 'slide-left-animation';
         }
+
+        // Don't go past the end.
+        if (this.currentSlide < (this.$.pages.children.length - 1))
+          this.$.pages.selectNext();
+
+        if (this.animated)
+          this.$.pages.selectedItem.playAnimation('entry');
+
+        // Make sure the hash is in sync.
+        //window.location.hash = this.currentSlide;
       },
 
       previous: function() {
-        var newSlide;
-        if (this._currentSlide > 0) {
-          newSlide = this._currentSlide - 1;
-          this._transition(this.children, newSlide);
+        if (this.animated) {
+          this._entryAnimation = 'slide-from-left-animation';
+          this._exitAnimation = 'slide-right-animation';
         }
-      },
 
-      _transition: function(children, newSlide) {
-        if (this._currentSlide !== undefined)
-          children[this._currentSlide].removeAttribute('showing');
+        // Don't go past the beginning.
+        if (this.currentSlide > 0 )
+          this.$.pages.selectPrevious();
 
-        children[newSlide].setAttribute('showing', true);
-        this._currentSlide = newSlide;
+        if (this.animated)
+          this.$.pages.selectedItem.playAnimation('entry');
 
         // Make sure the hash is in sync.
-        window.location.hash = this._currentSlide;
+        //window.location.hash = this.currentSlide;
       },
 
       _loadHashSlide: function() {
@@ -103,9 +141,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         if (!slide || slide < 0 || slide > children.length - 1)
           slide = 0;
 
-        // If we've actually changed the page, change it.
-        if (this._currentSlide !== slide)
-          this._transition(children, slide);
+        this.currentSlide = slide;
       }
     });
   </script>

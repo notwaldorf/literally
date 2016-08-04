@@ -25,7 +25,8 @@
   ],
   "dependencies": {
     "polymer": "polymer/polymer#^1.0.0",
-    "iron-flex-layout": "polymerelements/iron-flex-layout#^1.0.0"
+    "iron-flex-layout": "polymerelements/iron-flex-layout#^1.0.0",
+    "neon-animation": "PolymerElements/neon-animation#^1.0.0"
   },
   "devDependencies": {
     "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
