@@ -26,10 +26,10 @@
 
       attached: function() {
         this.focus();
-        this._currentSlide = 0;
 
         // Check if there's an initial loaded slide, or the default one.
         this._loadHashSlide();
+
         window.addEventListener('hashchange', this._loadHashSlide.bind(this));
 
         this.addEventListener('keydown', function(event) {
@@ -82,7 +82,9 @@
       },
 
       _transition: function(children, newSlide) {
-        children[this._currentSlide].removeAttribute('showing');
+        if (this._currentSlide !== undefined)
+          children[this._currentSlide].removeAttribute('showing');
+
         children[newSlide].setAttribute('showing', true);
         this._currentSlide = newSlide;
 
@@ -95,7 +97,7 @@
 
         // Sweet, sweet edge checking.
         var children = this.children;
-        if (slide === '' || slide < 0 || slide > children.length - 1)
+        if (!slide || slide < 0 || slide > children.length - 1)
           slide = 0;
 
         // If we've actually changed the page, change it.
