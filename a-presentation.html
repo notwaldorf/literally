@@ -54,11 +54,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       properties: {
         /**
-         * The current slide showing.
+         * The current slide showing. Fires a `current-slide-changed` event when updated.
          */
         currentSlide: {
           type: Number,
-          value: 0
+          value: 0,
+          notify: true
         },
 
         /**
