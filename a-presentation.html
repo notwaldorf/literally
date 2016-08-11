@@ -54,11 +54,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       properties: {
         /**
-         * The current slide showing.
+         * The current slide showing. Fires a `current-slide-changed` event when updated.
          */
         currentSlide: {
           type: Number,
-          value: 0
+          value: 0,
+          notify: true
         },
 
         /**
@@ -77,7 +78,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         // Check if there's an initial loaded slide, or the default one.
         this.currentSlide = parseInt(window.location.hash.replace('#', '') || 0);
 
-        var nexts = [39 /* right */, 40 /* down */, 32 /* space */, 32 /* space */, 13 /* enter */];
+        var nexts = [39 /* right */, 40 /* down */, 32 /* space */, 13 /* enter */];
         var backs = [37 /* left */, 38 /* up */];
         this.addEventListener('keydown', function(event) {
           if (nexts.indexOf(event.keyCode) !== -1 ) {
