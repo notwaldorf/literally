@@ -96,6 +96,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             this.previous();
           }
         });
+
+        window.addEventListener('hashchange', this.selectIndex.bind(this));
       },
 
       next: function() {
@@ -112,8 +114,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       previous: function() {
-        var page = this.currentSlide;
-
         if (this.animated) {
           this._entryAnimation = 'slide-from-left-animation';
           this._exitAnimation = 'slide-right-animation';
@@ -123,6 +123,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         if (this.currentSlide > 0 ) {
           window.location.hash = this.currentSlide - 1;
           this.$.pages.selectPrevious();
+        }
+      },
+
+      selectIndex: function() {
+        var hash = parseInt(window.location.hash.replace('#', '') || 0);
+    
+        if (this.animated) {
+          if (hash < this.currentSlide) {
+            this._entryAnimation = 'slide-from-left-animation';
+            this._exitAnimation = 'slide-right-animation';
+          } else {
+            this._entryAnimation = 'slide-from-right-animation';
+            this._exitAnimation = 'slide-left-animation';
+          }
+        }
+
+        // Don't go past the beginning.
+        if (hash > 0 && hash < this._maxSlides) {
+          this.$.pages.selectIndex(hash);
         }
       }
     });
