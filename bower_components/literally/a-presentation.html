@@ -1,0 +1,150 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../neon-animation/neon-animated-pages.html">
+<link rel="import" href="../neon-animation/neon-animations.html">
+
+<dom-module id="a-presentation">
+  <style>
+    :host {
+      display: block;
+      box-sizing: border-box;
+      height: 100vh;
+      width: 100%;
+    }
+
+    neon-animated-pages {
+      height: 100%;
+      width: 100%;
+    }
+
+    :host(:focus) {
+      outline: none;
+    }
+
+    :host > ::content > :not([.iron-selected]) {
+      display: none !important;
+    }
+  </style>
+
+  <template>
+    <neon-animated-pages id="pages"
+        selected="{{currentSlide}}"
+        entry-animation="[[_entryAnimation]]"
+        exit-animation="[[_exitAnimation]]">
+			<content select="a-slide"></content>
+		</neon-animated-pages>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'a-presentation',
+
+      hostAttributes: {
+        'tabindex': 0
+      },
+
+      properties: {
+        /**
+         * The current slide showing. Fires a `current-slide-changed` event when updated.
+         */
+        currentSlide: {
+          type: Number,
+          value: 0,
+          notify: true
+        },
+
+        /**
+         * Set to true if you want the slides to animate
+         */
+        animated: {
+          type: Boolean,
+          value: false
+        }
+      },
+
+      attached: function() {
+        this.focus();
+        this._maxSlides = Polymer.dom(this).children.length;
+
+        // Check if there's an initial loaded slide, or the default one.
+        this.currentSlide = parseInt(window.location.hash.replace('#', '') || 0);
+
+        var nexts = [39 /* right */, 40 /* down */, 32 /* space */, 13 /* enter */];
+        var backs = [37 /* left */, 38 /* up */];
+        this.addEventListener('keydown', function(event) {
+          if (nexts.indexOf(event.keyCode) !== -1 ) {
+            this.next();
+          } else if (backs.indexOf(event.keyCode) !== -1) {
+            this.previous();
+          } else if ((event.charChode == '32')) {  // Ok Firefox.
+            this.next();
+          }
+        }, true);
+
+        this.addEventListener('click', function(event) {
+          if (event.clientX > (screen.width / 2)) {
+            this.next();
+          } else {
+            this.previous();
+          }
+        });
+
+        window.addEventListener('hashchange', this.selectIndex.bind(this));
+      },
+
+      next: function() {
+        if (this.animated) {
+          this._entryAnimation = 'slide-from-right-animation';
+          this._exitAnimation = 'slide-left-animation';
+        }
+
+        // Don't go past the end.
+        if (this.currentSlide < this._maxSlides - 1) {
+          window.location.hash = this.currentSlide + 1;
+          this.$.pages.selectNext();
+        }
+      },
+
+      previous: function() {
+        if (this.animated) {
+          this._entryAnimation = 'slide-from-left-animation';
+          this._exitAnimation = 'slide-right-animation';
+        }
+
+        // Don't go past the beginning.
+        if (this.currentSlide > 0 ) {
+          window.location.hash = this.currentSlide - 1;
+          this.$.pages.selectPrevious();
+        }
+      },
+
+      selectIndex: function() {
+        var hash = parseInt(window.location.hash.replace('#', '') || 0);
+
+        if (this.animated) {
+          if (hash < this.currentSlide) {
+            this._entryAnimation = 'slide-from-left-animation';
+            this._exitAnimation = 'slide-right-animation';
+          } else {
+            this._entryAnimation = 'slide-from-right-animation';
+            this._exitAnimation = 'slide-left-animation';
+          }
+        }
+
+        // Don't go past the beginning.
+        if (hash > 0 && hash < this._maxSlides) {
+          this.$.pages.selectIndex(hash);
+        }
+      }
+    });
+  </script>
+</dom-module>

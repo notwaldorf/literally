@@ -1,0 +1,108 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+a-slide.theme-white {
+  background-color: white;
+  color: black;
+}
+
+a-slide.theme-green {
+  background-color: #0fa758;
+  color: white;
+}
+
+a-slide.theme-red {
+  background-color: #db4441;
+  color: white;
+}
+
+a-slide.theme-blue {
+  background: #4285ff;
+  color: white;
+}
+
+a-slide.theme-yellow {
+    background: #f4b400;
+  color: white;
+}
+
+a-slide.theme-green {
+    background: #0fa758;
+    color: #eee;
+}
+
+a-slide.theme-gray {
+    background: #424242;
+    color: #eee;
+}
+
+a-slide.theme-pink {
+  background-color: #e91e63;
+  color: black;
+}
+
+a-slide.theme-gradient-orange,
+a-slide.theme-gradient-blue {
+  color: white;
+}
+
+a-slide.theme-gradient-orange:before,
+a-slide.theme-gradient-blue:before {
+  /* Use this so that it blurs just the background image, and not
+   * the foreground text */
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+
+  /* Hack to get rid of the white border after blurring */
+  transform: scale(1.02);
+
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
+a-slide.theme-gradient-orange:before {
+  /* lol OMG */
+  background: url("http://farm4.staticflickr.com/3712/10194610465_1e3d7c6d29_z_d.jpg")
+      center center no-repeat,
+      -webkit-linear-gradient(top, rgb(241, 90, 36) 0%, rgba(252, 238, 0, 1.1) 100%);
+  background: url("http://farm4.staticflickr.com/3712/10194610465_1e3d7c6d29_z_d.jpg")
+      center center no-repeat,
+      -moz-linear-gradient(top, rgb(241, 90, 36) 0%, rgba(252, 238, 0, 1.1) 100%);
+  background: url("http://farm4.staticflickr.com/3712/10194610465_1e3d7c6d29_z_d.jpg")
+      center center no-repeat,
+      -ms-linear-gradient(top, rgb(241, 90, 36) 0%, rgba(252, 238, 0, 1.1) 100%);
+  background: url("http://farm4.staticflickr.com/3712/10194610465_1e3d7c6d29_z_d.jpg")
+      center center no-repeat,
+      linear-gradient(top, rgb(241, 90, 36) 0%, rgba(252, 238, 0, 1.1) 100%);
+
+  background-blend-mode: multiply;
+  background-size: cover;
+}
+
+a-slide.theme-gradient-blue:before {
+  background: url("http://farm4.staticflickr.com/3712/10194610465_1e3d7c6d29_z_d.jpg")
+      center center no-repeat,
+      -webkit-linear-gradient(top, rgba(11, 0, 48, 0.8) 0%, rgba(184, 66, 129, 0.8) 100%);
+  background: url("http://farm4.staticflickr.com/3712/10194610465_1e3d7c6d29_z_d.jpg")
+      center center no-repeat,
+      -moz-linear-gradient(top, rgba(11, 0, 48, 0.8) 0%, rgba(184, 66, 129, 0.8) 100%);
+  background: url("http://farm4.staticflickr.com/3712/10194610465_1e3d7c6d29_z_d.jpg")
+      center center no-repeat,
+      -ms-linear-gradient(top, rgba(11, 0, 48, 0.8) 0%, rgba(184, 66, 129, 0.8) 100%);
+  background: url("http://farm4.staticflickr.com/3712/10194610465_1e3d7c6d29_z_d.jpg")
+      center center no-repeat,
+      linear-gradient(top, rgba(11, 0, 48, 0.8) 0%, rgba(184, 66, 129, 0.8) 100%);
+
+  background-blend-mode: multiply;
+  background-size: cover;
+}

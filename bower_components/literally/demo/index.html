@@ -1,0 +1,124 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+  <title>literally another slide thing</title>
+
+  <!-- Load the polyfill -->
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+  <!-- Load the elements -->
+  <link rel="import" href="../a-presentation.html">
+  <link rel="import" href="../a-slide.html">
+
+  <!-- Look, I made you a basic theme -->
+  <link rel="stylesheet" href="../sample-theme.css">
+
+  <!-- Some fonts! -->
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700italic,700,400italic,100,100italic' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+
+  <style>
+    /* The sample-theme.css sets up some slide backgrounds for you. Here
+       we set up some content related styles.
+     */
+
+    /* Set up some fonts */
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    pre {
+      font-family: 'Inconsolata', monospace;
+    }
+
+    /* Disable bounce scrolling if that's not your thing (it's not mine) */
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      -webkit-overflow-scrolling: auto;
+    }
+
+    .code-snippet {
+      background-color: rgba(0, 0, 0, 0.6);
+      width: 100%;
+      padding: 20px;
+      font-size: calc(10px + 2vw);
+      overflow-x: auto;
+    }
+
+    .iframe-title {
+      font-size: 24px;
+      font-weight: lighter;
+    }
+  </style>
+</head>
+<!-- unresoved is a polymer keyword that prevents FOUC -->
+<body unresolved>
+  <a-presentation animated>
+    <!-- theme-gradient-orange comes from sample-theme.css -->
+    <!--but align-center is a property of a-slide -->
+
+    <a-slide class="theme-gradient-orange" align-center>
+      <div class="title">Yup</div>
+      <div class="subtitle">It's <b>literally</b> another slides thingie</div>
+    </a-slide>
+
+    <a-slide class="theme-green">
+      <div class="pretitle"><i>ok</i></div>
+      <!-- slightly smaller, to fit -->
+      <div class="title" style="font-size: calc(16px + 5vw)">I know what you're thinking.</div>
+      <div class="subtitle">This is a <i><b>great</b></i> idea!</div>
+    </a-slide>
+
+    <a-slide class="theme-blue" align-center>
+      <!-- max-width to make it mobile friendly, if you care -->
+      <img style="max-width:100%" src="http://i.imgur.com/c4jt321.png?fb" alt="this is fine dog on fire">
+    </a-slide>
+
+    <!-- full-width means that the content will not be sized, and takes the whole slide -->
+    <a-slide class="theme-red" full-width>
+      <div class="pretitle">it's web-components, yo</div>
+      <div class="code-snippet">
+        <pre>
+<span style="color: #f92672">&lt;a-presentation&gt;</span>
+  <span style="color: #f92672">&lt;a-slide&gt;</span>
+    <span style="color: #f92672">&lt;div</span> <span style="color: #a6e22e">class=</span><span style="color: #e6db74">&quot;title&quot;</span><span style="color: #f92672">&gt;</span>and polymer!<span style="color: #f92672">&lt;/div&gt;</span>
+    <span style="color: #f92672">&lt;div</span> <span style="color: #a6e22e">class=</span><span style="color: #e6db74">&quot;subtitle&quot;</span><span style="color: #f92672">&gt;</span>🔥🔥🔥<span style="color: #f92672">&lt;/div&gt;</span>
+  <span style="color: #f92672">&lt;/a-slide&gt;</span>
+<span style="color: #f92672">&lt;/a-presentation&gt;</span>
+        </pre>
+      </div>
+    </a-slide>
+
+    <!-- align center makes sure the content as a whole is centered in the page
+      text-align: center actually centers the text inside the content -->
+    <a-slide class="theme-yellow" align-center style="text-align: center">
+      <div class="iframe-title">iframes are <i><b>dope*</b></i></div>
+
+      <!-- anyway i hate iframes and don't know how to style them -->
+      <div style="width: 80vw; height: 80vh; overflow: auto; text-align: center;">
+        <iframe src="http://meowni.ca/emojillate/" height="100%" width="100%"></iframe>
+      </div>
+      <div class="iframe-title">* this is a lie</div>
+    </a-slide>
+
+    <a-slide class="theme-gradient-blue" align-right>
+      <div class="title">Code on github</div>
+      <div class="subtitle">notwaldorf/literally</div>
+    </a-slide>
+
+  </a-presentation>
+</body>
+</html>
