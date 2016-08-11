@@ -73,7 +73,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       attached: function() {
         this.focus();
-        this._maxSlides = this.$.pages.children.length;
+        this._maxSlides = Polymer.dom(this).children.length;
 
         // Check if there's an initial loaded slide, or the default one.
         this.currentSlide = parseInt(window.location.hash.replace('#', '') || 0);
@@ -129,7 +129,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       selectIndex: function() {
         var hash = parseInt(window.location.hash.replace('#', '') || 0);
-    
+
         if (this.animated) {
           if (hash < this.currentSlide) {
             this._entryAnimation = 'slide-from-left-animation';
