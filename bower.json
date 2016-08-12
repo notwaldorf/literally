@@ -16,7 +16,6 @@
     "url": "git://github.com/notwaldorf/literally.git"
   },
   "main": "index.html",
-  "license": "http://polymer.github.io/LICENSE.txt",
   "homepage": "https://github.com/notwaldorf/literally",
   "ignore": [
     "bower_components",
