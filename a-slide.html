@@ -81,7 +81,17 @@
 
   <script>
     Polymer({
-      is: 'a-slide'
+      is: 'a-slide',
+      properties: {
+        suppressNextAnimation: {
+          type: Boolean,
+          value: false
+        },
+        suppressPreviousAnimation: {
+          type: Boolean,
+          value: false
+        }
+      }
     });
   </script>
 </dom-module>

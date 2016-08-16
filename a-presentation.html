@@ -96,8 +96,13 @@
 
       next: function() {
         if (this.animated) {
-          this._entryAnimation = 'slide-from-right-animation';
-          this._exitAnimation = 'slide-left-animation';
+          if (this.$.pages.selectedItem.suppressNextAnimation) {
+            this._entryAnimation = '';
+            this._exitAnimation = '';
+          } else {
+            this._entryAnimation = 'slide-from-right-animation';
+            this._exitAnimation = 'slide-left-animation';
+          }
         }
 
         // Don't go past the end.
@@ -109,8 +114,13 @@
 
       previous: function() {
         if (this.animated) {
-          this._entryAnimation = 'slide-from-left-animation';
-          this._exitAnimation = 'slide-right-animation';
+          if (this.$.pages.selectedItem.suppressPreviousAnimation) {
+            this._entryAnimation = '';
+            this._exitAnimation = '';
+          } else {
+            this._entryAnimation = 'slide-from-left-animation';
+            this._exitAnimation = 'slide-right-animation';
+          }
         }
 
         // Don't go past the beginning.
