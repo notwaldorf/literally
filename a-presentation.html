@@ -81,6 +81,9 @@
         }, true);
 
         this.addEventListener('click', function(event) {
+          if (event.target.tagName.toLowerCase() !== 'a-slide') {
+            return;
+          }
           if (event.clientX > (screen.width / 2)) {
             this.next();
           } else {
